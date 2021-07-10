@@ -1,9 +1,8 @@
 import axios from "axios";
 import { IDevTagJSON } from "~/utils/types";
 
-
 export async function getTags(): Promise<IDevTagJSON[]> {
-    let tags:IDevTagJSON[] = null!;
+    let tags: IDevTagJSON[] = null!;
 
     try {
         let response = await axios.get("https://dev.to/api/tags");
@@ -12,6 +11,5 @@ export async function getTags(): Promise<IDevTagJSON[]> {
     } catch (error) {
         throw new Error(error);
     }
-    return tags
-        
+    return tags;
 }

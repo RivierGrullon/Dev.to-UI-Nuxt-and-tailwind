@@ -1,6 +1,6 @@
 export interface IDevTagJSON {
-    "id": number,
-    "name": string,
-    "bg_color_hex": string,
-    "text_color_hex": string
+    id: number;
+    name: string;
+    bg_color_hex: string;
+    text_color_hex: string;
 }
