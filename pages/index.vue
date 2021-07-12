@@ -3,6 +3,7 @@
         <section class="container mx-auto py-8">
             <div class="grid grid-cols-4 gap-4 bg-gray-800">
                 <left-column />
+
                 <div class="col-span-2">
                     <ul class="space-y-4">
                         <li
@@ -12,7 +13,8 @@
                         ></li>
                     </ul>
                 </div>
-                <div>
+                                <right-column />
+                <!-- <div>
                     <ul class="space-y-4">
                         <li
                             class="h-8 rounded bg-blue-400"
@@ -20,7 +22,7 @@
                             :key="n"
                         ></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>
