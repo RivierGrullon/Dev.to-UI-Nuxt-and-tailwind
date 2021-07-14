@@ -12,7 +12,8 @@ module.exports = {
             // Extend the theme with custom colors
             colors: {
                 gray: {
-                    dev: "#191e25"
+                    dev: "#191e25",
+                    dev2: "#1a2634",
                 }
             }
         },
