@@ -46,12 +46,13 @@ export async function getListing(nuxt: NuxtApp): Promise<IDevListingJSON[]> {
 //     return articles;
 // }
 // // function that push more articles to the store
-export async function getArticles(nuxt: NuxtApp) {
+export async function getArticles(nuxt: NuxtApp, page?: number) {
     let articles: IDevArticleJSON[] = null!;
+    let url = page
+        ? `https://dev.to/api/articles?page=${page}`
+        : `https://dev.to/api/articles`;
     try {
-        let response = await nuxt.$axios.get(
-            "https://dev.to/api/articles"
-        );
+        let response = await nuxt.$axios.get(url);
         let data = await response.data;
         articles = data.map((item: any) => {
             return {
