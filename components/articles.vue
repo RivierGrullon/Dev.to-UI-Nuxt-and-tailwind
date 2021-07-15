@@ -23,6 +23,11 @@
                 />
             </div>
         </div>
+        <infinite-loading
+            v-if="posts.length"
+            spinner="spiral"
+            @infinite="infiniteScroll"
+        ></infinite-loading>
     </div>
 </template>
 
@@ -33,13 +38,33 @@ export default {
     data() {
         return {
             posts: [],
+            page: 1,
         };
     },
-
+    methods: {
+        infiniteScroll($state) {
+            setTimeout(async () => {
+                this.page++;
+                try {
+                    const data = await getArticles(this.$nuxt, this.page);
+                    if (data.length) {
+                        this.posts = this.posts.concat(data);
+                        $state.loaded();
+                    } else {
+                        $state.complete();
+                    }
+                    // this.posts = this.posts.concat(data);
+                } catch (e) {
+                    console.error(e);
+                }
+            }, 500);
+        },
+    },
     async fetch() {
         const articles = await getArticles(this.$nuxt);
         this.posts = articles;
     },
     fetchOnServer: false,
+    scrollToTop: true,
 };
 </script>
